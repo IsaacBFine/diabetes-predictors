@@ -1,13 +1,3 @@
-"""
-test_feature_engineering.py
-
-Unit and integration tests for the diabetes feature engineering notebook.
-Run with:  python -m pytest test_feature_engineering.py -v
-       or: python test_feature_engineering.py   (uses unittest directly)
-
-Dependencies: pandas, numpy, scikit-learn, statsmodels
-"""
-
 import unittest
 import numpy as np
 import pandas as pd
@@ -16,11 +6,8 @@ from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_auc_score
 from statsmodels.stats.outliers_influence import variance_inflation_factor
-
-
-# ---------------------------------------------------------------------------
-# Helpers — replicated from the notebook so tests are self-contained
-# ---------------------------------------------------------------------------
+ 
+# Helpers — replicated from the notebook so tests are self-contained ---------------
 
 INTERACTION_PAIRS = [
     ("HighBP",      "HighChol"),
@@ -136,12 +123,11 @@ def make_synthetic_df(n=200, seed=42):
     return df
 
 
-# ---------------------------------------------------------------------------
-# Unit Tests
-# ---------------------------------------------------------------------------
 
+# Unit Tests --------------------------
+
+# Tests for the pair deduplication logic
 class TestDeduplication(unittest.TestCase):
-    """Tests for the pair deduplication logic."""
 
     def test_no_duplicates_in_ses_pairs(self):
         seen = set()
@@ -162,8 +148,8 @@ class TestDeduplication(unittest.TestCase):
         self.assertEqual(result[1], ("C", "D"))
 
 
+# Tests for build_interaction_features().
 class TestInteractionFeatureEngineering(unittest.TestCase):
-    """Tests for build_interaction_features()."""
 
     def setUp(self):
         df = make_synthetic_df()
@@ -221,8 +207,8 @@ class TestInteractionFeatureEngineering(unittest.TestCase):
         self.assertEqual(X_ses.shape[1], expected)
 
 
+# Tests for StandardScaler behavior used throughout the notebook.
 class TestStandardScaler(unittest.TestCase):
-    """Tests for StandardScaler behavior used throughout the notebook."""
 
     def setUp(self):
         df = make_synthetic_df()
@@ -245,9 +231,8 @@ class TestStandardScaler(unittest.TestCase):
         X_scaled = scaler.fit_transform(self.X_raw)
         self.assertEqual(X_scaled.shape, self.X_raw.shape)
 
-
+# Tests for VIF computation.
 class TestVIF(unittest.TestCase):
-    """Tests for VIF computation."""
 
     def setUp(self):
         df = make_synthetic_df()
@@ -277,9 +262,8 @@ class TestVIF(unittest.TestCase):
         self.assertIn("VIF", vif_df.columns)
         self.assertEqual(len(vif_df), len(self.feature_names))
 
-
+# Tests for the cv_auc helper
 class TestCvAuc(unittest.TestCase):
-    """Tests for the cv_auc helper."""
 
     def setUp(self):
         df = make_synthetic_df()
@@ -306,9 +290,8 @@ class TestCvAuc(unittest.TestCase):
         _, std = cv_auc(model, self.X_scaled, self.y, self.cv)
         self.assertGreaterEqual(std, 0.0)
 
-
+# Tests for the correlation matrix computation.
 class TestCorrelationHeatmap(unittest.TestCase):
-    """Tests for the correlation matrix computation."""
 
     def setUp(self):
         df = make_synthetic_df()
@@ -332,15 +315,10 @@ class TestCorrelationHeatmap(unittest.TestCase):
         np.testing.assert_allclose(corr.values, corr.values.T, atol=1e-10)
 
 
-# ---------------------------------------------------------------------------
-# Integration Tests
-# ---------------------------------------------------------------------------
+# Integration Tests --------------
 
+# End-to-end integration tests that exercise the full notebook pipeline on synthetic data.
 class TestLassoPipelineIntegration(unittest.TestCase):
-    """
-    End-to-end integration tests that exercise the full notebook pipeline
-    on synthetic data. These are slower — they fit actual LASSO models.
-    """
 
     @classmethod
     def setUpClass(cls):
@@ -455,9 +433,7 @@ class TestLassoPipelineIntegration(unittest.TestCase):
         self.assertIn("Diabetes", grouped.columns)
 
 
-# ---------------------------------------------------------------------------
-# Entry point
-# ---------------------------------------------------------------------------
+# Entry point -----------
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
