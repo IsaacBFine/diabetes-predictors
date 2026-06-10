@@ -1,0 +1,30 @@
+[project]
+name = "diabetes-predictors"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+   
+   # core data
+    "pandas",
+    "numpy",
+ 
+    # visualization
+    "matplotlib",
+    "seaborn",
+    "plotly",
+ 
+    # machine learning
+    "scikit-learn",
+    "statsmodels",
+    "scipy",
+    "xgboost",
+ 
+    # notebook support
+    "jupyter",
+    "ipykernel",
+    "ipywidgets",
+ 
+    # utilities
+    "requests",
+    "tqdm",
+]
