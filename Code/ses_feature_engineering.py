@@ -9,6 +9,8 @@ Socioeconomic (SES) interaction feature engineering for diabetes prediction.
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import random
+random.seed(67)
 from matplotlib.patches import Patch
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegressionCV, LogisticRegression
