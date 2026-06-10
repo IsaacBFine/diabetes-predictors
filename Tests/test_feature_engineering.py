@@ -1,6 +1,8 @@
 import unittest
 import numpy as np
 import pandas as pd
+import random
+random.seed(67)
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression, LogisticRegressionCV
 from sklearn.model_selection import StratifiedKFold
