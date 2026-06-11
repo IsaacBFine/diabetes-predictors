@@ -1,4 +1,6 @@
 
+-- UNIT TESTS ---
+
 def test_plsr_q2y_scores_are_valid(X_train_scaled, Y_train):
     # tests if Q2Y scores are in valid range
     for n in range(1, 5):
