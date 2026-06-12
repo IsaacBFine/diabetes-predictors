@@ -241,8 +241,8 @@ All output figures are saved in `Results/`:
 
 ## Authors
 
-Isaac Fine
-Paloma Duvergne
-Eddie Hahm
-Gloria Chen
-Chibudom Ofoegbu
+- Isaac Fine  
+- Paloma Duvergne  
+- Eddie Hahm  
+- Gloria Chen  
+- Chibudom Ofoegbu  
