@@ -24,13 +24,12 @@ Y = data["Diabetes_binary"]
 # Split data into training (80%) and testing (20%) sets
 # random_state=67 ensures reproducibility and that we can debug with tests
 # stratify=Y preserves the same 50/50 diabetes ratio in both train and test sets
-
-scaler = StandardScaler()
-
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=67, stratify=Y)
      
 
 #Standardize data so binary and continuous variables have equal weight
+scaler = StandardScaler()
+
 X_train_scaled = scaler.fit_transform(X_train)  #Calculate mean and standard deviation from training data then standardize it
 X_test_scaled = scaler.transform(X_test)        #Apply same scale to test data
 
