@@ -1,5 +1,15 @@
 # --- UNIT AND INTEGRATION TESTS FOR PLSR WORKFLOW ---
 
+from sklearn.cross_decomposition import PLSRegression
+from sklearn.model_selection import cross_val_score
+import numpy as np
+import matplotlib.pyplot as plt
+import random
+random.seed(67)
+import numpy as np
+np.random.seed(67)
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import train_test_split
 
 # TEST 1 — STANDARDIZATION
 def test_scaled_data_has_correct_shape(X_train_scaled, X_train):
