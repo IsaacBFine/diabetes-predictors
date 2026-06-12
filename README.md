@@ -238,3 +238,11 @@ All output figures are saved in `Results/`:
 - `Results/lasso/` — Cross-validation curves, feature coefficient plots
 - `Results/feature-engineering/` — Correlation matrix, VIF, model comparison bar charts
 - `Results/plsr/` — Component selection plot, loading plots (1D and 2D)
+
+## Authors
+
+Isaac Fine
+Paloma Duvergne
+Eddie Hahm
+Gloria Chen
+Chibudom Ofoegbu
