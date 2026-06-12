@@ -9,6 +9,12 @@ np.random.seed(67)
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
+
+#Split data into indicators and diabetes outcome.
+
+X = data.drop(columns = ["Diabetes_binary"])
+Y = data["Diabetes_binary"]
+
 #Fit a 4 component model
 pls = PLSRegression(n_components=4)
 pls.fit(X_train_scaled, Y_train)
