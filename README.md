@@ -11,19 +11,5 @@ The primary goals of the project were to:
 
 **Repository Structure**
 
-├── Data/
-│   └── clean/
-│       └── diabetes_binary_5050split_health_indicators_BRFSS2015.csv
-│
-├── notebooks/
-│   ├── lasso_analysis.ipynb
-│   ├── plsr_analysis.ipynb
-│   └── feature_engineering.ipynb
-│
-├── tests/
-│   ├── test_lasso.py
-│   └── test_plsr.py
-│
-├── Final_Report.pdf
-└── README.md
+
 
