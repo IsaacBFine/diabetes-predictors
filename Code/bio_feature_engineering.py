@@ -170,6 +170,27 @@ else:
 #    Runs k-fold CV and returns mean + std AUC so we can compare models fairly.
 
 def cv_auc(model, X, y, cv):
+    """
+    Compute mean and standard deviation of ROC-AUC across cross-validation folds.
+
+    Parameters
+    ----------
+    model : sklearn estimator
+        An unfitted classifier with predict_proba support (e.g. LogisticRegression).
+    X : np.ndarray
+        Feature matrix (scaled), shape (n_samples, n_features).
+    y : np.ndarray or pd.Series
+        Binary target labels (0 = no diabetes, 1 = diabetes).
+    cv : sklearn cross-validator
+        A splitter such as StratifiedKFold that yields (train_idx, test_idx) pairs.
+
+    Returns
+    -------
+    mean_auc : float
+        Mean ROC-AUC across all folds.
+    std_auc : float
+        Standard deviation of ROC-AUC across all folds.
+    """
     aucs = []
     for train_idx, test_idx in cv.split(X, y):
         model.fit(X[train_idx], y[train_idx])
