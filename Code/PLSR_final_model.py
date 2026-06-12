@@ -8,7 +8,13 @@ import numpy as np
 np.random.seed(67)
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+import pandas as pd
 
+url = "https://raw.githubusercontent.com/IsaacBFine/diabetes-predictors/refs/heads/main/Data/clean/diabetes_binary_5050split_health_indicators_BRFSS2015.csv"
+
+data = pd.read_csv(url)
+data.head()
+#Loads in dataset
 
 #Split data into indicators and diabetes outcome.
 
